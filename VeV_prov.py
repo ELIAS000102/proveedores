@@ -696,7 +696,7 @@ class PanelConfiguracion(tk.Toplevel):
 
     def _construir_ui(self):
         main_box = tk.Frame(self, bg=COLOR_BG)
-        main_box.pack(fill="both", expand=True, padx=8, pady=8)
+        main_box.pack(fill="both", expand=True, padx=6, pady=6)
 
         canvas = tk.Canvas(main_box, bg=COLOR_BG, highlightthickness=0)
         scrollbar = ttk.Scrollbar(main_box, orient="vertical", command=canvas.yview)
@@ -713,25 +713,25 @@ class PanelConfiguracion(tk.Toplevel):
 
         card_gen = self._crear_tarjeta(self.scroll_content, "INFORMACIÓN GENERAL DEL PROVEEDOR")
         f_inputs = tk.Frame(card_gen, bg=COLOR_PANEL)
-        f_inputs.pack(fill="x", padx=12, pady=8)
+        f_inputs.pack(fill="x", padx=9, pady=6)
         f_inputs.grid_columnconfigure(1, weight=1)
         f_inputs.grid_columnconfigure(3, weight=1)
 
         ent_kwargs = dict(font=FONT_BASE, bd=0, relief="flat", highlightthickness=1,
                           highlightbackground=COLOR_CARD_BORDER, highlightcolor=COLOR_ACCENT)
 
-        tk.Label(f_inputs, text="Nombre Proveedor:", font=FONT_BOLD, bg=COLOR_PANEL, fg=COLOR_TEXT).grid(row=0, column=0, sticky="w", pady=4)
-        tk.Entry(f_inputs, textvariable=self.var_nombre, **ent_kwargs).grid(row=0, column=1, columnspan=3, sticky="ew", padx=(8, 0), pady=4, ipady=3)
+        tk.Label(f_inputs, text="Nombre Proveedor:", font=FONT_BOLD, bg=COLOR_PANEL, fg=COLOR_TEXT).grid(row=0, column=0, sticky="w", pady=3)
+        tk.Entry(f_inputs, textvariable=self.var_nombre, **ent_kwargs).grid(row=0, column=1, columnspan=3, sticky="ew", padx=(6, 0), pady=3, ipady=2)
 
-        tk.Label(f_inputs, text="Código TVI:", font=FONT_BOLD, bg=COLOR_PANEL, fg=COLOR_TEXT).grid(row=1, column=0, sticky="w", pady=4)
-        tk.Entry(f_inputs, textvariable=self.var_tvi, **ent_kwargs).grid(row=1, column=1, sticky="ew", padx=(8, 0), pady=4, ipady=3)
+        tk.Label(f_inputs, text="Código TVI:", font=FONT_BOLD, bg=COLOR_PANEL, fg=COLOR_TEXT).grid(row=1, column=0, sticky="w", pady=3)
+        tk.Entry(f_inputs, textvariable=self.var_tvi, **ent_kwargs).grid(row=1, column=1, sticky="ew", padx=(6, 0), pady=3, ipady=2)
 
-        tk.Label(f_inputs, text="Código TFI:", font=FONT_BOLD, bg=COLOR_PANEL, fg=COLOR_TEXT).grid(row=1, column=2, sticky="w", padx=(12, 0), pady=4)
-        tk.Entry(f_inputs, textvariable=self.var_tfi, **ent_kwargs).grid(row=1, column=3, sticky="ew", padx=(8, 0), pady=4, ipady=3)
+        tk.Label(f_inputs, text="Código TFI:", font=FONT_BOLD, bg=COLOR_PANEL, fg=COLOR_TEXT).grid(row=1, column=2, sticky="w", padx=(9, 0), pady=3)
+        tk.Entry(f_inputs, textvariable=self.var_tfi, **ent_kwargs).grid(row=1, column=3, sticky="ew", padx=(6, 0), pady=3, ipady=2)
 
         card_ddc = self._crear_tarjeta(self.scroll_content, "CONFIGURACIÓN FLUJO DDC (DESPACHO DIRECTO A CLIENTE)")
         top_ddc = tk.Frame(card_ddc, bg=COLOR_PANEL)
-        top_ddc.pack(fill="x", padx=8, pady=(4, 2))
+        top_ddc.pack(fill="x", padx=6, pady=(3, 2))
 
         tk.Checkbutton(top_ddc, text="Activar Flujo DDC", variable=self.var_ddc_activo,
                        command=self._actualizar_estados, font=FONT_SUBTITLE, bg=COLOR_PANEL, fg=COLOR_ACCENT).pack(side="left")
@@ -747,7 +747,7 @@ class PanelConfiguracion(tk.Toplevel):
 
         card_dvr = self._crear_tarjeta(self.scroll_content, "CONFIGURACIÓN FLUJO DVR (DESPACHO VÍA RIPLEY)")
         top_dvr = tk.Frame(card_dvr, bg=COLOR_PANEL)
-        top_dvr.pack(fill="x", padx=8, pady=(4, 2))
+        top_dvr.pack(fill="x", padx=6, pady=(3, 2))
 
         tk.Checkbutton(top_dvr, text="Activar Flujo DVR", variable=self.var_dvr_activo,
                        command=self._actualizar_estados, font=FONT_SUBTITLE, bg=COLOR_PANEL, fg=COLOR_ACCENT).pack(side="left")
@@ -762,7 +762,7 @@ class PanelConfiguracion(tk.Toplevel):
 
         # Apartado de Desfase DVR
         f_desface_container = tk.Frame(card_dvr, bg=COLOR_PANEL)
-        f_desface_container.pack(fill="x", padx=8, pady=4)
+        f_desface_container.pack(fill="x", padx=6, pady=3)
         
         self.chk_dvr_usar_desface = tk.Checkbutton(
             f_desface_container, text="Proveedor cuenta con Desfase DVR (Afecta Plazo Mínimo)",
@@ -780,34 +780,34 @@ class PanelConfiguracion(tk.Toplevel):
         )
 
         btn_box = tk.Frame(self.scroll_content, bg=COLOR_BG)
-        btn_box.pack(fill="x", pady=(4, 2))
+        btn_box.pack(fill="x", pady=(3, 2))
 
         tk.Button(btn_box, text="Guardar Configuración", font=FONT_BOLD, bg=COLOR_ACCENT, fg="white",
                   activebackground=COLOR_ACCENT_HOVER, activeforeground="white", relief="flat", bd=0,
-                  padx=16, pady=7, cursor="hand2",
+                  padx=12, pady=5, cursor="hand2",
                   command=self._guardar).pack(side="right")
 
         tk.Button(btn_box, text="Cancelar", font=FONT_BOLD, bg=COLOR_PANEL, fg="#dc2626",
                   activebackground="#fee2e2", activeforeground="#dc2626", relief="flat", bd=0,
                   highlightthickness=1, highlightbackground="#fecaca",
-                  padx=16, pady=7, cursor="hand2",
-                  command=self.destroy).pack(side="right", padx=(0, 8))
+                  padx=12, pady=5, cursor="hand2",
+                  command=self.destroy).pack(side="right", padx=(0, 6))
 
     def _crear_tarjeta(self, parent, titulo):
         card = tk.Frame(parent, bg=COLOR_PANEL, bd=0, highlightthickness=1, highlightbackground=COLOR_CARD_BORDER)
-        card.pack(fill="x", pady=(0, 10))
+        card.pack(fill="x", pady=(0, 7))
         head = tk.Frame(card, bg=COLOR_HEADER_BG)
         head.pack(fill="x")
-        tk.Label(head, text=titulo, font=FONT_HEADER, bg=COLOR_HEADER_BG, fg=COLOR_HEADER_TXT).pack(anchor="w", padx=10, pady=5)
+        tk.Label(head, text=titulo, font=FONT_HEADER, bg=COLOR_HEADER_BG, fg=COLOR_HEADER_TXT).pack(anchor="w", padx=7, pady=4)
         return card
 
     def _crear_tabla_resumen_efectivos(self, parent, titulo, incluir_plazo_min=False):
         container = tk.LabelFrame(parent, text=f" {titulo} ", font=FONT_HEADER, bg="#f0fdf4", fg="#15803d",
                                   bd=1, relief="solid", highlightthickness=0)
-        container.pack(fill="x", padx=10, pady=8, ipadx=4, ipady=4)
+        container.pack(fill="x", padx=7, pady=6, ipadx=3, ipady=3)
 
         tbl = tk.Frame(container, bg="#bbf7d0")
-        tbl.pack(fill="x", padx=4, pady=2)
+        tbl.pack(fill="x", padx=3, pady=2)
 
         num_cols = 4 if incluir_plazo_min else 3
         for col_i in range(num_cols):
@@ -816,12 +816,12 @@ class PanelConfiguracion(tk.Toplevel):
         bg_hdr = "#dcfce7"
         fg_hdr = "#166534"
 
-        tk.Label(tbl, text="Día Venta", font=FONT_HEADER, bg=bg_hdr, fg=fg_hdr).grid(row=0, column=0, sticky="nsew", padx=1, pady=1, ipady=3)
-        tk.Label(tbl, text="Días Reporte", font=FONT_HEADER, bg=bg_hdr, fg=fg_hdr).grid(row=0, column=1, sticky="nsew", padx=1, pady=1, ipady=3)
-        tk.Label(tbl, text="Días Preparación", font=FONT_HEADER, bg=bg_hdr, fg=fg_hdr).grid(row=0, column=2, sticky="nsew", padx=1, pady=1, ipady=3)
+        tk.Label(tbl, text="Día Venta", font=FONT_HEADER, bg=bg_hdr, fg=fg_hdr).grid(row=0, column=0, sticky="nsew", padx=1, pady=1, ipady=2)
+        tk.Label(tbl, text="Días Reporte", font=FONT_HEADER, bg=bg_hdr, fg=fg_hdr).grid(row=0, column=1, sticky="nsew", padx=1, pady=1, ipady=2)
+        tk.Label(tbl, text="Días Preparación", font=FONT_HEADER, bg=bg_hdr, fg=fg_hdr).grid(row=0, column=2, sticky="nsew", padx=1, pady=1, ipady=2)
         
         if incluir_plazo_min:
-            tk.Label(tbl, text="Plazo Mín. Dinámico", font=FONT_HEADER, bg=bg_hdr, fg=fg_hdr).grid(row=0, column=3, sticky="nsew", padx=1, pady=1, ipady=3)
+            tk.Label(tbl, text="Plazo Mín. Dinámico", font=FONT_HEADER, bg=bg_hdr, fg=fg_hdr).grid(row=0, column=3, sticky="nsew", padx=1, pady=1, ipady=2)
 
         dict_labels = {}
         for idx, dia_nom in enumerate(ORDEN_VENTA):
@@ -847,7 +847,7 @@ class PanelConfiguracion(tk.Toplevel):
 
     def _crear_grupo_dias(self, parent, titulo, variables):
         frame = tk.Frame(parent, bg=COLOR_PANEL)
-        frame.pack(fill="x", padx=10, pady=3)
+        frame.pack(fill="x", padx=7, pady=2)
         tk.Label(frame, text=titulo, font=FONT_SMALL, bg=COLOR_PANEL, fg=COLOR_MUTED).pack(anchor="w")
 
         sub = tk.Frame(frame, bg=COLOR_PANEL)
@@ -863,9 +863,9 @@ class PanelConfiguracion(tk.Toplevel):
 
     def _crear_grid_plazos(self, parent, titulo, dicc_vars):
         f_plaz = tk.Frame(parent, bg="#f8fafc", bd=0, highlightthickness=1, highlightbackground=COLOR_CARD_BORDER)
-        f_plaz.pack(fill="x", padx=10, pady=5, ipadx=2, ipady=4)
+        f_plaz.pack(fill="x", padx=7, pady=4, ipadx=2, ipady=3)
 
-        tk.Label(f_plaz, text=titulo, font=FONT_HEADER, bg="#f8fafc", fg=COLOR_PRIMARY).pack(anchor="w", padx=4, pady=(2, 4))
+        tk.Label(f_plaz, text=titulo, font=FONT_HEADER, bg="#f8fafc", fg=COLOR_PRIMARY).pack(anchor="w", padx=3, pady=(2, 3))
         grid = tk.Frame(f_plaz, bg="#f8fafc")
         grid.pack(fill="x", padx=2)
 
@@ -1108,25 +1108,25 @@ class App(tk.Tk):
         self.sidebar.grid_rowconfigure(2, weight=1)
 
         self.sb_top = tk.Frame(self.sidebar, bg=COLOR_SIDEBAR_BG)
-        self.sb_top.pack(fill="x", padx=14, pady=16)
+        self.sb_top.pack(fill="x", padx=10, pady=12)
 
-        self.btn_toggle = tk.Button(self.sb_top, text="≡", font=("Segoe UI", 12, "bold"), bg=COLOR_SIDEBAR_BG, fg="white",
+        self.btn_toggle = tk.Button(self.sb_top, text="☰", font=("Segoe UI", 12, "bold"), bg=COLOR_SIDEBAR_BG, fg="white",
                                     activebackground=COLOR_SIDEBAR_HOVER, activeforeground="white", relief="flat",
                                     bd=0, cursor="hand2", command=self._toggle_sidebar)
         self.btn_toggle.pack(side="left")
 
         self.lbl_brand = tk.Label(self.sb_top, text="FLOW MONITOR", font=FONT_BRAND, bg=COLOR_SIDEBAR_BG, fg="white")
-        self.lbl_brand.pack(side="left", padx=10)
+        self.lbl_brand.pack(side="left", padx=7)
 
-        tk.Frame(self.sidebar, bg=COLOR_SIDEBAR_HOVER, height=1).pack(fill="x", padx=14)
+        tk.Frame(self.sidebar, bg=COLOR_SIDEBAR_HOVER, height=1).pack(fill="x", padx=10)
 
         self.sb_items_frame = tk.Frame(self.sidebar, bg=COLOR_SIDEBAR_BG)
-        self.sb_items_frame.pack(fill="x", padx=8, pady=12)
+        self.sb_items_frame.pack(fill="x", padx=6, pady=9)
 
         self._crear_item_menu("Menú Principal", self._mostrar_vista_principal)
 
         self.lbl_seccion = tk.Label(self.sb_items_frame, text="OTROS APARTADOS", font=FONT_CAPTION, bg=COLOR_SIDEBAR_BG, fg="#64748b")
-        self.lbl_seccion.pack(anchor="w", padx=12, pady=(16, 6))
+        self.lbl_seccion.pack(anchor="w", padx=9, pady=(12, 5))
 
         self._crear_item_menu("Ajustes Sistema", self._mostrar_vista_ajustes_sistema)
 
@@ -1138,11 +1138,11 @@ class App(tk.Tk):
     def _crear_item_menu(self, texto, comando):
         cursor_style = "hand2" if comando else ""
         btn_f = tk.Frame(self.sb_items_frame, bg=COLOR_SIDEBAR_BG, cursor=cursor_style)
-        btn_f.pack(fill="x", pady=3)
+        btn_f.pack(fill="x", pady=2)
 
         lbl_txt = tk.Label(btn_f, text=texto, font=FONT_BOLD, bg=COLOR_SIDEBAR_BG, 
                            fg="white" if comando else "#64748b", cursor=cursor_style)
-        lbl_txt.pack(side="left", padx=10, pady=8)
+        lbl_txt.pack(side="left", padx=7, pady=6)
 
         self.menu_labels.append(lbl_txt)
 
@@ -1161,10 +1161,10 @@ class App(tk.Tk):
             self.sidebar.configure(width=52)
             self.sidebar_expandido = False
         else:
-            self.lbl_brand.pack(side="left", padx=10)
-            self.lbl_seccion.pack(anchor="w", padx=12, pady=(16, 6))
+            self.lbl_brand.pack(side="left", padx=7)
+            self.lbl_seccion.pack(anchor="w", padx=9, pady=(12, 5))
             for lbl in self.menu_labels:
-                lbl.pack(side="left", padx=10, pady=8)
+                lbl.pack(side="left", padx=7, pady=6)
             self.sidebar.configure(width=220)
             self.sidebar_expandido = True
 
@@ -1181,38 +1181,38 @@ class App(tk.Tk):
         self.main_container.grid_columnconfigure(0, weight=1)
 
         top_bar = tk.Frame(self.main_container, bg=COLOR_PANEL, bd=0, highlightthickness=1, highlightbackground=COLOR_CARD_BORDER)
-        top_bar.grid(row=0, column=0, sticky="ew", padx=16, pady=(14, 8))
+        top_bar.grid(row=0, column=0, sticky="ew", padx=12, pady=(10, 6))
 
         head_info = tk.Frame(top_bar, bg=COLOR_PANEL)
-        head_info.pack(side="left", padx=18, pady=14)
+        head_info.pack(side="left", padx=13, pady=10)
 
         tk.Label(head_info, text="Panel de Gestión de Proveedores", font=FONT_TITLE, bg=COLOR_PANEL, fg=COLOR_PRIMARY).pack(anchor="w")
         tk.Label(head_info, text="Selecciona un proveedor para ver sus matrices de flujo de venta", font=FONT_CAPTION, bg=COLOR_PANEL, fg=COLOR_MUTED).pack(anchor="w", pady=(2, 0))
 
         right_box = tk.Frame(top_bar, bg=COLOR_PANEL)
-        right_box.pack(side="right", padx=18, pady=14)
+        right_box.pack(side="right", padx=13, pady=10)
 
-        btn_export = tk.Button(right_box, text="📥 Exportar Todo", font=FONT_BOLD, bg="#059669", fg="white",
-                               activebackground="#047857", relief="flat", cursor="hand2", padx=14, pady=7,
+        btn_export = tk.Button(right_box, text="⬇ Exportar Todo", font=FONT_BOLD, bg="#059669", fg="white",
+                               activebackground="#047857", relief="flat", cursor="hand2", padx=10, pady=5,
                                bd=0, command=self._exportar_matrices_csv)
-        btn_export.pack(side="right", padx=(8, 0))
+        btn_export.pack(side="right", padx=(6, 0))
 
         btn_add = tk.Button(right_box, text="+ Agregar Proveedor", font=FONT_BOLD, bg=COLOR_ACCENT, fg="white",
-                            activebackground=COLOR_ACCENT_HOVER, relief="flat", cursor="hand2", padx=14, pady=7,
+                            activebackground=COLOR_ACCENT_HOVER, relief="flat", cursor="hand2", padx=10, pady=5,
                             bd=0, command=self._agregar_proveedor)
-        btn_add.pack(side="right", padx=(8, 0))
+        btn_add.pack(side="right", padx=(6, 0))
 
         f_search = tk.Frame(right_box, bg="#f1f5f9", bd=0, highlightthickness=1, highlightbackground=COLOR_CARD_BORDER)
-        f_search.pack(side="right", padx=(0, 8))
+        f_search.pack(side="right", padx=(0, 6))
 
-        tk.Label(f_search, text="🔍", font=FONT_BASE, bg="#f1f5f9", fg=COLOR_MUTED).pack(side="left", padx=(8, 2))
+        tk.Label(f_search, text="Buscar", font=FONT_SMALL, bg="#f1f5f9", fg=COLOR_MUTED).pack(side="left", padx=(8, 2))
         ent = tk.Entry(f_search, textvariable=self.filtro_busqueda, font=FONT_BASE, bg="#f1f5f9", bd=0,
                        insertbackground=COLOR_TEXT)
-        ent.pack(side="left", padx=(0, 8), pady=6)
+        ent.pack(side="left", padx=(0, 6), pady=5)
         self.filtro_busqueda.trace_add("write", lambda *a: self._renderizar_grid_proveedores())
 
         f_scroll = tk.Frame(self.main_container, bg=COLOR_BG)
-        f_scroll.grid(row=1, column=0, sticky="nsew", padx=16, pady=(0, 12))
+        f_scroll.grid(row=1, column=0, sticky="nsew", padx=12, pady=(0, 9))
 
         canvas = tk.Canvas(f_scroll, bg=COLOR_BG, highlightthickness=0)
         sb = ttk.Scrollbar(f_scroll, orient="vertical", command=canvas.yview)
@@ -1237,7 +1237,7 @@ class App(tk.Tk):
         filtro_provs = [p for name, p in self.proveedores.items() if not query or query in name.upper()]
 
         if not filtro_provs:
-            tk.Label(self.cards_container, text="No se encontraron proveedores.", font=FONT_SUBTITLE, bg=COLOR_BG, fg=COLOR_MUTED).pack(pady=40)
+            tk.Label(self.cards_container, text="No se encontraron proveedores.", font=FONT_SUBTITLE, bg=COLOR_BG, fg=COLOR_MUTED).pack(pady=29)
             return
 
         col_count = 3
@@ -1250,49 +1250,49 @@ class App(tk.Tk):
 
     def _crear_tarjeta_resumen_proveedor(self, parent, prov: Proveedor, row, col):
         card = tk.Frame(parent, bg=COLOR_PANEL, bd=0, highlightthickness=1, highlightbackground=COLOR_CARD_BORDER)
-        card.grid(row=row, column=col, sticky="nsew", padx=8, pady=8)
+        card.grid(row=row, column=col, sticky="nsew", padx=6, pady=6)
 
         chead = tk.Frame(card, bg=COLOR_HEADER_BG)
         chead.pack(fill="x")
 
-        tk.Label(chead, text=prov.nombre, font=FONT_SUBTITLE, bg=COLOR_HEADER_BG, fg="white").pack(side="left", padx=12, pady=8)
+        tk.Label(chead, text=prov.nombre, font=FONT_SUBTITLE, bg=COLOR_HEADER_BG, fg="white").pack(side="left", padx=9, pady=6)
 
         cbody = tk.Frame(card, bg=COLOR_PANEL)
-        cbody.pack(fill="both", expand=True, padx=12, pady=10)
+        cbody.pack(fill="both", expand=True, padx=9, pady=7)
 
         f_codes = tk.Frame(cbody, bg=COLOR_PANEL)
-        f_codes.pack(fill="x", pady=(0, 8))
+        f_codes.pack(fill="x", pady=(0, 6))
 
-        tk.Label(f_codes, text=f"TVI: {prov.tvi or '—'}", font=FONT_BOLD, bg="#f1f5f9", fg=COLOR_PRIMARY, padx=6, pady=2).pack(side="left", padx=(0, 4))
-        tk.Label(f_codes, text=f"TFI: {prov.tfi or '—'}", font=FONT_BOLD, bg="#f1f5f9", fg=COLOR_PRIMARY, padx=6, pady=2).pack(side="left")
+        tk.Label(f_codes, text=f"TVI: {prov.tvi or '—'}", font=FONT_BOLD, bg="#f1f5f9", fg=COLOR_PRIMARY, padx=5, pady=2).pack(side="left", padx=(0, 3))
+        tk.Label(f_codes, text=f"TFI: {prov.tfi or '—'}", font=FONT_BOLD, bg="#f1f5f9", fg=COLOR_PRIMARY, padx=5, pady=2).pack(side="left")
 
         f_badges = tk.Frame(cbody, bg=COLOR_PANEL)
-        f_badges.pack(fill="x", pady=(0, 12))
+        f_badges.pack(fill="x", pady=(0, 9))
 
         if prov.ddc_activo:
-            tk.Label(f_badges, text="DDC ACTIVO", font=FONT_SMALL, bg="#dcfce7", fg="#15803d", padx=6, pady=2).pack(side="left", padx=(0, 4))
+            tk.Label(f_badges, text="DDC ACTIVO", font=FONT_SMALL, bg="#dcfce7", fg="#15803d", padx=5, pady=2).pack(side="left", padx=(0, 3))
         else:
-            tk.Label(f_badges, text="DDC INACTIVO", font=FONT_SMALL, bg="#f1f5f9", fg=COLOR_MUTED, padx=6, pady=2).pack(side="left", padx=(0, 4))
+            tk.Label(f_badges, text="DDC INACTIVO", font=FONT_SMALL, bg="#f1f5f9", fg=COLOR_MUTED, padx=5, pady=2).pack(side="left", padx=(0, 3))
 
         if prov.dvr_activo:
-            tk.Label(f_badges, text="DVR ACTIVO", font=FONT_SMALL, bg="#ffedd5", fg="#c2410c", padx=6, pady=2).pack(side="left")
+            tk.Label(f_badges, text="DVR ACTIVO", font=FONT_SMALL, bg="#ffedd5", fg="#c2410c", padx=5, pady=2).pack(side="left")
         else:
-            tk.Label(f_badges, text="DVR INACTIVO", font=FONT_SMALL, bg="#f1f5f9", fg=COLOR_MUTED, padx=6, pady=2).pack(side="left")
+            tk.Label(f_badges, text="DVR INACTIVO", font=FONT_SMALL, bg="#f1f5f9", fg=COLOR_MUTED, padx=5, pady=2).pack(side="left")
 
         f_actions = tk.Frame(card, bg="#f8fafc", bd=0, highlightthickness=1, highlightbackground=COLOR_CARD_BORDER)
         f_actions.pack(fill="x")
 
         btn_ver = tk.Button(f_actions, text="Ver Matrices →", font=FONT_BOLD, bg=COLOR_ACCENT, fg="white",
                             activebackground=COLOR_ACCENT_HOVER, activeforeground="white", relief="flat", bd=0,
-                            cursor="hand2", pady=7,
+                            cursor="hand2", pady=5,
                             command=lambda p=prov.nombre: self._mostrar_vista_detalle(p))
-        btn_ver.pack(side="left", fill="x", expand=True, padx=(8, 4), pady=8)
+        btn_ver.pack(side="left", fill="x", expand=True, padx=(6, 3), pady=6)
 
         btn_del = tk.Button(f_actions, text="Eliminar", font=FONT_BOLD, bg="#fee2e2", fg="#dc2626",
                             activebackground="#fca5a5", activeforeground="#dc2626", relief="flat", bd=0,
-                            cursor="hand2", pady=7, padx=12,
+                            cursor="hand2", pady=5, padx=9,
                             command=lambda p=prov.nombre: self._eliminar_proveedor(p))
-        btn_del.pack(side="right", padx=(0, 8), pady=8)
+        btn_del.pack(side="right", padx=(0, 6), pady=6)
 
     # -------------------------------------------------------------------
     # AJUSTES DEL SISTEMA: DÍAS INOPERATIVOS (BLOQUEO MASIVO)
@@ -1307,91 +1307,63 @@ class App(tk.Tk):
         self.main_container.grid_columnconfigure(0, weight=1)
 
         top_bar = tk.Frame(self.main_container, bg=COLOR_PANEL, bd=0, highlightthickness=1, highlightbackground=COLOR_CARD_BORDER)
-        top_bar.grid(row=0, column=0, sticky="ew", padx=16, pady=(14, 8))
+        top_bar.grid(row=0, column=0, sticky="ew", padx=12, pady=(10, 6))
 
         head_info = tk.Frame(top_bar, bg=COLOR_PANEL)
-        head_info.pack(side="left", padx=16, pady=12)
+        head_info.pack(side="left", padx=12, pady=9)
 
         tk.Label(head_info, text="Ajustes del Sistema", font=FONT_TITLE, bg=COLOR_PANEL, fg=COLOR_PRIMARY).pack(anchor="w")
         tk.Label(head_info, text="Declara días inoperativos (feriados o casos únicos) para uno o varios proveedores",
                  font=FONT_SMALL, bg=COLOR_PANEL, fg=COLOR_MUTED).pack(anchor="w")
 
         body = tk.Frame(self.main_container, bg=COLOR_BG)
-        body.grid(row=1, column=0, sticky="nsew", padx=16, pady=(0, 12))
-        body.grid_columnconfigure(0, weight=0, minsize=430)
-        body.grid_columnconfigure(1, weight=1)
+        body.grid(row=1, column=0, sticky="nsew", padx=12, pady=(0, 9))
+        body.grid_columnconfigure(0, weight=3, minsize=480)
+        body.grid_columnconfigure(1, weight=2, minsize=280)
         body.grid_rowconfigure(0, weight=1)
 
-        # --- Panel de Calendario ---
+        # --- Panel de Calendario (ampliado) ---
         cal_panel = tk.Frame(body, bg=COLOR_PANEL, bd=0, highlightthickness=1, highlightbackground=COLOR_CARD_BORDER)
-        cal_panel.grid(row=0, column=0, sticky="nsew", padx=(0, 10))
+        cal_panel.grid(row=0, column=0, sticky="nsew", padx=(0, 8))
 
         nav = tk.Frame(cal_panel, bg=COLOR_PANEL)
-        nav.pack(fill="x", padx=12, pady=10)
+        nav.pack(fill="x", padx=14, pady=(14, 8))
 
-        tk.Button(nav, text="◀", font=FONT_BOLD, bg=COLOR_ACCENT, fg="white", activebackground=COLOR_ACCENT_HOVER,
-                  activeforeground="white", relief="flat", bd=0, cursor="hand2",
-                  padx=10, pady=4, command=self._calendario_mes_anterior).pack(side="left")
+        tk.Button(nav, text="‹", font=("Segoe UI", 13, "bold"), bg=COLOR_ACCENT, fg="white",
+                  activebackground=COLOR_ACCENT_HOVER, activeforeground="white", relief="flat", bd=0,
+                  cursor="hand2", width=3, pady=4, command=self._calendario_mes_anterior).pack(side="left")
 
-        self.lbl_mes_actual = tk.Label(nav, text="", font=FONT_SUBTITLE, bg=COLOR_PANEL, fg=COLOR_PRIMARY)
+        self.lbl_mes_actual = tk.Label(nav, text="", font=("Segoe UI", 12, "bold"), bg=COLOR_PANEL, fg=COLOR_PRIMARY)
         self.lbl_mes_actual.pack(side="left", expand=True)
 
-        tk.Button(nav, text="▶", font=FONT_BOLD, bg=COLOR_ACCENT, fg="white", activebackground=COLOR_ACCENT_HOVER,
-                  activeforeground="white", relief="flat", bd=0, cursor="hand2",
-                  padx=10, pady=4, command=self._calendario_mes_siguiente).pack(side="right")
+        tk.Button(nav, text="›", font=("Segoe UI", 13, "bold"), bg=COLOR_ACCENT, fg="white",
+                  activebackground=COLOR_ACCENT_HOVER, activeforeground="white", relief="flat", bd=0,
+                  cursor="hand2", width=3, pady=4, command=self._calendario_mes_siguiente).pack(side="right")
 
         leyenda_cal = tk.Frame(cal_panel, bg=COLOR_PANEL)
-        leyenda_cal.pack(fill="x", padx=12)
+        leyenda_cal.pack(fill="x", padx=14)
         tk.Label(leyenda_cal, text="Día inoperativo", font=FONT_SMALL, bg=COLOR_DIA_INOPERATIVO,
-                 fg=COLOR_DIA_INOPERATIVO_TXT, padx=6, pady=1).pack(side="left")
+                 fg=COLOR_DIA_INOPERATIVO_TXT, padx=6, pady=2).pack(side="left")
         tk.Label(leyenda_cal, text="Seleccionado", font=FONT_SMALL, bg=COLOR_HOY_BORDER,
-                 fg="white", padx=6, pady=1).pack(side="left", padx=6)
+                 fg="white", padx=6, pady=2).pack(side="left", padx=6)
 
         self.cal_grid_frame = tk.Frame(cal_panel, bg=COLOR_BORDER)
-        self.cal_grid_frame.pack(fill="both", expand=True, padx=12, pady=12)
+        self.cal_grid_frame.pack(fill="both", expand=True, padx=14, pady=14)
 
-        # --- Panel Lateral: proveedores afectados + lista de bloqueos ---
+        # --- Panel Lateral: solo lista de días inoperativos configurados ---
         side_panel = tk.Frame(body, bg=COLOR_PANEL, bd=0, highlightthickness=1, highlightbackground=COLOR_CARD_BORDER)
         side_panel.grid(row=0, column=1, sticky="nsew")
 
-        self.lbl_dia_sel = tk.Label(side_panel, text="Selecciona un día del calendario", font=FONT_SUBTITLE,
-                                     bg=COLOR_PANEL, fg=COLOR_PRIMARY)
-        self.lbl_dia_sel.pack(anchor="w", padx=16, pady=(16, 8))
+        side_head = tk.Frame(side_panel, bg=COLOR_PANEL)
+        side_head.pack(fill="x", padx=14, pady=(14, 8))
 
-        tk.Label(side_panel, text="Proveedores afectados:", font=FONT_BOLD, bg=COLOR_PANEL, fg=COLOR_TEXT
-                 ).pack(anchor="w", padx=16)
-
-        self.frame_provs_bloqueo = tk.Frame(side_panel, bg=COLOR_PANEL)
-        self.frame_provs_bloqueo.pack(fill="x", padx=16, pady=(4, 0))
-
-        self.var_todos_proveedores_bloqueo = tk.BooleanVar(value=False)
-        self.vars_proveedores_bloqueo = {}
-        self.chk_proveedores_bloqueo = {}
-
-        btns_frame = tk.Frame(side_panel, bg=COLOR_PANEL)
-        btns_frame.pack(fill="x", padx=16, pady=12)
-
-        self.btn_guardar_bloqueo = tk.Button(
-            btns_frame, text="Guardar día inoperativo", font=FONT_BOLD, bg="#059669", fg="white",
-            activebackground="#047857", activeforeground="white", relief="flat", bd=0,
-            cursor="hand2", padx=12, pady=7, state="disabled",
-            command=self._guardar_bloqueo_dia_seleccionado)
-        self.btn_guardar_bloqueo.pack(side="left", padx=(0, 8))
-
-        self.btn_quitar_bloqueo = tk.Button(
-            btns_frame, text="Quitar bloqueo", font=FONT_BOLD, bg="#fee2e2", fg="#dc2626",
-            activebackground="#fca5a5", activeforeground="#dc2626", relief="flat", bd=0,
-            cursor="hand2", padx=12, pady=7, state="disabled",
-            command=self._quitar_bloqueo_dia_seleccionado)
-        self.btn_quitar_bloqueo.pack(side="left")
-
-        tk.Frame(side_panel, bg=COLOR_BORDER, height=1).pack(fill="x", padx=16, pady=(4, 10))
-
-        tk.Label(side_panel, text="Días inoperativos configurados", font=FONT_BOLD, bg=COLOR_PANEL, fg=COLOR_TEXT
-                 ).pack(anchor="w", padx=16)
+        tk.Label(side_head, text="Días inoperativos configurados", font=FONT_SUBTITLE,
+                 bg=COLOR_PANEL, fg=COLOR_PRIMARY).pack(anchor="w")
+        tk.Label(side_head, text="Selecciona un día en el calendario para bloquearlo o editarlo",
+                 font=FONT_SMALL, bg=COLOR_PANEL, fg=COLOR_MUTED, wraplength=260, justify="left").pack(anchor="w", pady=(2, 0))
 
         lista_wrap = tk.Frame(side_panel, bg=COLOR_PANEL)
-        lista_wrap.pack(fill="both", expand=True, padx=16, pady=(6, 16))
+        lista_wrap.pack(fill="both", expand=True, padx=14, pady=(4, 14))
 
         canvas_lista = tk.Canvas(lista_wrap, bg=COLOR_PANEL, highlightthickness=0)
         sb_lista = ttk.Scrollbar(lista_wrap, orient="vertical", command=canvas_lista.yview)
@@ -1406,7 +1378,6 @@ class App(tk.Tk):
         canvas_lista.pack(side="left", fill="both", expand=True)
 
         self._renderizar_calendario_bloqueos()
-        self._actualizar_panel_dia_seleccionado()
         self._renderizar_lista_bloqueos()
 
     def _calendario_mes_anterior(self):
@@ -1416,7 +1387,6 @@ class App(tk.Tk):
             self.calendario_anio -= 1
         self.dia_calendario_seleccionado = None
         self._renderizar_calendario_bloqueos()
-        self._actualizar_panel_dia_seleccionado()
 
     def _calendario_mes_siguiente(self):
         self.calendario_mes += 1
@@ -1425,12 +1395,11 @@ class App(tk.Tk):
             self.calendario_anio += 1
         self.dia_calendario_seleccionado = None
         self._renderizar_calendario_bloqueos()
-        self._actualizar_panel_dia_seleccionado()
 
     def _seleccionar_dia_calendario(self, fecha_sel):
         self.dia_calendario_seleccionado = fecha_sel
         self._renderizar_calendario_bloqueos()
-        self._actualizar_panel_dia_seleccionado()
+        self._abrir_dialogo_bloqueo_dia(fecha_sel)
 
     def _renderizar_calendario_bloqueos(self):
         for w in self.cal_grid_frame.winfo_children():
@@ -1445,13 +1414,14 @@ class App(tk.Tk):
 
         for c, nombre_dia in enumerate(["LUN", "MAR", "MIE", "JUE", "VIE", "SAB", "DOM"]):
             tk.Label(self.cal_grid_frame, text=nombre_dia, font=FONT_SMALL, bg=COLOR_HEADER_BG, fg=COLOR_HEADER_TXT
-                     ).grid(row=0, column=c, sticky="nsew", padx=1, pady=1)
+                     ).grid(row=0, column=c, sticky="nsew", padx=1, pady=1, ipady=4)
 
         cal = calendar.Calendar(firstweekday=0)
         semanas = cal.monthdatescalendar(self.calendario_anio, self.calendario_mes)
         hoy = date.today()
 
         for r, semana in enumerate(semanas):
+            self.cal_grid_frame.grid_rowconfigure(r + 1, weight=1, uniform="cal_r")
             for c, dia_fecha in enumerate(semana):
                 del_mes_actual = dia_fecha.month == self.calendario_mes
                 info_bloqueo = self.bloqueos.get(dia_fecha.isoformat())
@@ -1465,84 +1435,129 @@ class App(tk.Tk):
                     bg = COLOR_PANEL if del_mes_actual else "#f1f5f9"
                     fg = COLOR_ACCENT if (dia_fecha == hoy and del_mes_actual) else (COLOR_TEXT if del_mes_actual else COLOR_MUTED)
 
-                lbl = tk.Label(self.cal_grid_frame, text=str(dia_fecha.day), font=FONT_BOLD, bg=bg, fg=fg,
-                               cursor="hand2", padx=4, pady=10)
+                lbl = tk.Label(self.cal_grid_frame, text=str(dia_fecha.day), font=("Segoe UI", 11, "bold"), bg=bg, fg=fg,
+                               cursor="hand2", padx=4, pady=16)
                 lbl.grid(row=r + 1, column=c, sticky="nsew", padx=1, pady=1)
                 lbl.bind("<Button-1>", lambda e, f=dia_fecha: self._seleccionar_dia_calendario(f))
 
-    def _toggle_todos_proveedores_bloqueo(self):
-        activo = self.var_todos_proveedores_bloqueo.get()
-        for nombre, chk in self.chk_proveedores_bloqueo.items():
-            chk.config(state="disabled" if activo else "normal")
-
-    def _actualizar_panel_dia_seleccionado(self):
-        for w in self.frame_provs_bloqueo.winfo_children():
-            w.destroy()
-
-        fecha_sel = self.dia_calendario_seleccionado
-        if fecha_sel is None:
-            self.lbl_dia_sel.config(text="Selecciona un día del calendario")
-            self.btn_guardar_bloqueo.config(state="disabled")
-            self.btn_quitar_bloqueo.config(state="disabled")
-            return
-
+    def _abrir_dialogo_bloqueo_dia(self, fecha_sel):
+        """Ventana emergente que se abre al elegir un día del calendario: permite
+        declararlo inoperativo para todos los proveedores o solo para algunos."""
         info_actual = self.bloqueos.get(fecha_sel.isoformat())
         provs_actuales = info_actual.get("proveedores", []) if info_actual else []
 
-        self.lbl_dia_sel.config(text=f"Día seleccionado: {fecha_sel.strftime('%d/%m/%Y')}")
-        self.btn_guardar_bloqueo.config(state="normal")
-        self.btn_quitar_bloqueo.config(state="normal" if info_actual else "disabled")
+        dlg = tk.Toplevel(self)
+        dlg.title("Día inoperativo")
+        dlg.configure(bg=COLOR_PANEL)
+        dlg.transient(self)
+        _geometria_adaptativa(dlg, 440, 560, 380, 420)
+        dlg.grab_set()
 
-        self.var_todos_proveedores_bloqueo = tk.BooleanVar(value=(TODOS_LOS_PROVEEDORES in provs_actuales))
-        tk.Checkbutton(self.frame_provs_bloqueo, text="Todos los proveedores", variable=self.var_todos_proveedores_bloqueo,
-                       font=FONT_BOLD, bg=COLOR_PANEL, command=self._toggle_todos_proveedores_bloqueo
-                       ).pack(anchor="w", pady=(4, 6))
+        def _cerrar_dialogo():
+            self.dia_calendario_seleccionado = None
+            self._renderizar_calendario_bloqueos()
+            dlg.destroy()
 
-        self.vars_proveedores_bloqueo = {}
-        self.chk_proveedores_bloqueo = {}
+        dlg.protocol("WM_DELETE_WINDOW", _cerrar_dialogo)
+
+        header = tk.Frame(dlg, bg=COLOR_PANEL)
+        header.pack(fill="x", padx=18, pady=(18, 8))
+        tk.Label(header, text=fecha_sel.strftime("%d/%m/%Y"), font=FONT_TITLE,
+                 bg=COLOR_PANEL, fg=COLOR_PRIMARY).pack(anchor="w")
+        tk.Label(header, text="¿El día inoperativo afecta a todos los proveedores o solo a algunos?",
+                 font=FONT_SMALL, bg=COLOR_PANEL, fg=COLOR_MUTED, wraplength=390, justify="left"
+                 ).pack(anchor="w", pady=(3, 0))
+
+        tk.Frame(dlg, bg=COLOR_BORDER, height=1).pack(fill="x", padx=18, pady=(10, 12))
+
+        body = tk.Frame(dlg, bg=COLOR_PANEL)
+        body.pack(fill="both", expand=True, padx=18)
+
+        var_todos = tk.BooleanVar(value=(TODOS_LOS_PROVEEDORES in provs_actuales))
+        vars_prov = {}
+        chk_prov = {}
+
+        def _toggle_todos():
+            estado = "disabled" if var_todos.get() else "normal"
+            for chk in chk_prov.values():
+                chk.config(state=estado)
+
+        tk.Checkbutton(body, text="Todos los proveedores", variable=var_todos, font=FONT_BOLD,
+                        bg=COLOR_PANEL, activebackground=COLOR_PANEL, cursor="hand2",
+                        command=_toggle_todos).pack(anchor="w", pady=(0, 10))
+
+        tk.Label(body, text="Proveedores específicos", font=FONT_BOLD, bg=COLOR_PANEL, fg=COLOR_TEXT
+                 ).pack(anchor="w", pady=(0, 4))
+
+        lista_wrap = tk.Frame(body, bg=COLOR_PANEL, bd=0, highlightthickness=1, highlightbackground=COLOR_CARD_BORDER)
+        lista_wrap.pack(fill="both", expand=True)
+
+        canvas_p = tk.Canvas(lista_wrap, bg=COLOR_PANEL, highlightthickness=0)
+        sb_p = ttk.Scrollbar(lista_wrap, orient="vertical", command=canvas_p.yview)
+        frame_p = tk.Frame(canvas_p, bg=COLOR_PANEL)
+        frame_p.bind("<Configure>", lambda e: canvas_p.configure(scrollregion=canvas_p.bbox("all")))
+        win_p = canvas_p.create_window((0, 0), window=frame_p, anchor="nw")
+        canvas_p.bind("<Configure>", lambda e: canvas_p.itemconfig(win_p, width=e.width))
+        canvas_p.configure(yscrollcommand=sb_p.set)
+        sb_p.pack(side="right", fill="y")
+        canvas_p.pack(side="left", fill="both", expand=True)
+
+        estado_inicial = "disabled" if var_todos.get() else "normal"
         for nombre in sorted(self.proveedores.keys()):
             var = tk.BooleanVar(value=(nombre in provs_actuales))
-            chk = tk.Checkbutton(self.frame_provs_bloqueo, text=nombre, variable=var, font=FONT_BASE, bg=COLOR_PANEL,
-                                 state=("disabled" if TODOS_LOS_PROVEEDORES in provs_actuales else "normal"))
-            chk.pack(anchor="w", padx=(16, 0))
-            self.vars_proveedores_bloqueo[nombre] = var
-            self.chk_proveedores_bloqueo[nombre] = chk
+            chk = tk.Checkbutton(frame_p, text=nombre, variable=var, font=FONT_BASE, bg=COLOR_PANEL,
+                                  state=estado_inicial)
+            chk.pack(anchor="w", padx=8, pady=2)
+            vars_prov[nombre] = var
+            chk_prov[nombre] = chk
 
-    def _guardar_bloqueo_dia_seleccionado(self):
-        fecha_sel = self.dia_calendario_seleccionado
-        if fecha_sel is None:
-            return
+        footer = tk.Frame(dlg, bg=COLOR_PANEL)
+        footer.pack(fill="x", padx=18, pady=18)
 
-        if self.var_todos_proveedores_bloqueo.get():
-            provs = [TODOS_LOS_PROVEEDORES]
-        else:
-            provs = [nombre for nombre, var in self.vars_proveedores_bloqueo.items() if var.get()]
+        def _guardar():
+            if var_todos.get():
+                provs = [TODOS_LOS_PROVEEDORES]
+            else:
+                provs = [nombre for nombre, var in vars_prov.items() if var.get()]
 
-        if not provs:
-            messagebox.showwarning(
-                "Selecciona proveedores",
-                "Marca 'Todos los proveedores' o al menos un proveedor específico para declarar este día como inoperativo.")
-            return
+            if not provs:
+                messagebox.showwarning(
+                    "Selecciona proveedores",
+                    "Marca 'Todos los proveedores' o al menos un proveedor específico para declarar este día como inoperativo.",
+                    parent=dlg)
+                return
 
-        self.bloqueos[fecha_sel.isoformat()] = {"proveedores": provs}
-        guardar_bloqueos_json(self.bloqueos)
+            self.bloqueos[fecha_sel.isoformat()] = {"proveedores": provs}
+            guardar_bloqueos_json(self.bloqueos)
+            self.dia_calendario_seleccionado = None
+            self._renderizar_calendario_bloqueos()
+            self._renderizar_lista_bloqueos()
+            dlg.destroy()
 
-        self._renderizar_calendario_bloqueos()
-        self._actualizar_panel_dia_seleccionado()
-        self._renderizar_lista_bloqueos()
+        def _quitar():
+            self._quitar_bloqueo_fecha(fecha_sel.isoformat())
+            self.dia_calendario_seleccionado = None
+            self._renderizar_calendario_bloqueos()
+            dlg.destroy()
 
-    def _quitar_bloqueo_dia_seleccionado(self):
-        fecha_sel = self.dia_calendario_seleccionado
-        if fecha_sel is None:
-            return
-        self._quitar_bloqueo_fecha(fecha_sel.isoformat())
+        tk.Button(footer, text="Guardar", font=FONT_BOLD, bg="#059669", fg="white",
+                  activebackground="#047857", activeforeground="white", relief="flat", bd=0,
+                  cursor="hand2", padx=14, pady=7, command=_guardar).pack(side="left")
+
+        if info_actual:
+            tk.Button(footer, text="Quitar bloqueo", font=FONT_BOLD, bg="#fee2e2", fg="#dc2626",
+                      activebackground="#fca5a5", activeforeground="#dc2626", relief="flat", bd=0,
+                      cursor="hand2", padx=14, pady=7, command=_quitar).pack(side="left", padx=(8, 0))
+
+        tk.Button(footer, text="Cancelar", font=FONT_BOLD, bg="#e2e8f0", fg=COLOR_PRIMARY,
+                  activebackground="#cbd5e1", activeforeground=COLOR_PRIMARY, relief="flat", bd=0,
+                  cursor="hand2", padx=14, pady=7, command=_cerrar_dialogo).pack(side="right")
 
     def _quitar_bloqueo_fecha(self, fecha_str):
         if fecha_str in self.bloqueos:
             del self.bloqueos[fecha_str]
             guardar_bloqueos_json(self.bloqueos)
         self._renderizar_calendario_bloqueos()
-        self._actualizar_panel_dia_seleccionado()
         self._renderizar_lista_bloqueos()
 
     def _renderizar_lista_bloqueos(self):
@@ -1551,7 +1566,7 @@ class App(tk.Tk):
 
         if not self.bloqueos:
             tk.Label(self.frame_lista_bloqueos, text="No hay días inoperativos configurados.",
-                     font=FONT_SMALL, bg=COLOR_PANEL, fg=COLOR_MUTED).pack(anchor="w", pady=10)
+                     font=FONT_SMALL, bg=COLOR_PANEL, fg=COLOR_MUTED).pack(anchor="w", pady=7)
             return
 
         for fecha_str in sorted(self.bloqueos.keys()):
@@ -1565,18 +1580,18 @@ class App(tk.Tk):
             texto_provs = "Todos los proveedores" if TODOS_LOS_PROVEEDORES in provs else (", ".join(provs) if provs else "—")
 
             row = tk.Frame(self.frame_lista_bloqueos, bg="#fef2f2", bd=0, highlightthickness=1, highlightbackground=COLOR_CARD_BORDER)
-            row.pack(fill="x", pady=3)
+            row.pack(fill="x", pady=2)
 
             info_box = tk.Frame(row, bg="#fef2f2")
-            info_box.pack(side="left", fill="x", expand=True, padx=8, pady=6)
+            info_box.pack(side="left", fill="x", expand=True, padx=6, pady=5)
 
             tk.Label(info_box, text=fecha_fmt, font=FONT_BOLD, bg="#fef2f2", fg="#991b1b").pack(anchor="w")
             tk.Label(info_box, text=texto_provs, font=FONT_SMALL, bg="#fef2f2", fg=COLOR_MUTED,
                      wraplength=220, justify="left").pack(anchor="w")
 
-            tk.Button(row, text="✕", font=FONT_BOLD, bg="#fee2e2", fg="#dc2626", activebackground="#fca5a5",
-                      activeforeground="#dc2626", relief="flat", bd=0, cursor="hand2", padx=6, pady=2,
-                      command=lambda fs=fecha_str: self._quitar_bloqueo_fecha(fs)).pack(side="right", padx=8)
+            tk.Button(row, text="×", font=("Segoe UI", 11, "bold"), bg="#fee2e2", fg="#dc2626", activebackground="#fca5a5",
+                      activeforeground="#dc2626", relief="flat", bd=0, cursor="hand2", padx=6, pady=1,
+                      command=lambda fs=fecha_str: self._quitar_bloqueo_fecha(fs)).pack(side="right", padx=6)
 
     def _mostrar_vista_detalle(self, nombre_proveedor):
         self.proveedor_seleccionado = nombre_proveedor
@@ -1590,32 +1605,32 @@ class App(tk.Tk):
         prov = self.proveedores[nombre_proveedor]
 
         top_bar = tk.Frame(self.main_container, bg=COLOR_PANEL, bd=0, highlightthickness=1, highlightbackground=COLOR_CARD_BORDER)
-        top_bar.grid(row=0, column=0, sticky="ew", padx=16, pady=(14, 8))
+        top_bar.grid(row=0, column=0, sticky="ew", padx=12, pady=(10, 6))
 
         btn_back = tk.Button(top_bar, text="← Volver al Menú", font=FONT_BOLD, bg="#e2e8f0", fg=COLOR_PRIMARY,
                              activebackground="#cbd5e1", activeforeground=COLOR_PRIMARY, relief="flat", bd=0,
-                             cursor="hand2", padx=12, pady=6,
+                             cursor="hand2", padx=9, pady=5,
                              command=self._mostrar_vista_principal)
-        btn_back.pack(side="left", padx=14, pady=12)
+        btn_back.pack(side="left", padx=10, pady=9)
 
         head_tit = tk.Frame(top_bar, bg=COLOR_PANEL)
-        head_tit.pack(side="left", padx=16)
+        head_tit.pack(side="left", padx=12)
 
         tk.Label(head_tit, text=f"MATRICES DE FLUJO DE VENTA: {prov.nombre}", font=FONT_TITLE, bg=COLOR_PANEL, fg=COLOR_PRIMARY).pack(anchor="w")
         
         f_sub_codes = tk.Frame(head_tit, bg=COLOR_PANEL)
-        f_sub_codes.pack(anchor="w", pady=(3, 0))
-        tk.Label(f_sub_codes, text=f"Código TVI: {prov.tvi or 'N/A'}", font=FONT_BOLD, bg="#e0f2fe", fg="#0369a1", padx=6, pady=1).pack(side="left", padx=(0, 6))
-        tk.Label(f_sub_codes, text=f"Código TFI: {prov.tfi or 'N/A'}", font=FONT_BOLD, bg="#fef3c7", fg="#b45309", padx=6, pady=1).pack(side="left")
+        f_sub_codes.pack(anchor="w", pady=(2, 0))
+        tk.Label(f_sub_codes, text=f"Código TVI: {prov.tvi or 'N/A'}", font=FONT_BOLD, bg="#e0f2fe", fg="#0369a1", padx=5, pady=1).pack(side="left", padx=(0, 5))
+        tk.Label(f_sub_codes, text=f"Código TFI: {prov.tfi or 'N/A'}", font=FONT_BOLD, bg="#fef3c7", fg="#b45309", padx=5, pady=1).pack(side="left")
 
         btn_cfg = tk.Button(top_bar, text="⚙ Configurar", font=FONT_BOLD, bg="#0f172a", fg="white",
                             activebackground="#1e293b", activeforeground="white", relief="flat", bd=0,
-                            cursor="hand2", padx=14, pady=7,
+                            cursor="hand2", padx=10, pady=5,
                             command=lambda: self._editar_proveedor(prov))
-        btn_cfg.pack(side="right", padx=12, pady=10)
+        btn_cfg.pack(side="right", padx=9, pady=7)
 
         f_scroll = tk.Frame(self.main_container, bg=COLOR_BG)
-        f_scroll.grid(row=1, column=0, sticky="nsew", padx=16, pady=(0, 12))
+        f_scroll.grid(row=1, column=0, sticky="nsew", padx=12, pady=(0, 9))
 
         canvas = tk.Canvas(f_scroll, bg=COLOR_BG, highlightthickness=0)
         sb = ttk.Scrollbar(f_scroll, orient="vertical", command=canvas.yview)
@@ -1632,16 +1647,16 @@ class App(tk.Tk):
 
         if not prov.ddc_activo and not prov.dvr_activo:
             tk.Label(contenido, text="Este proveedor no tiene activado ningún flujo de venta (DDC o DVR).",
-                     font=FONT_SUBTITLE, bg=COLOR_BG, fg=COLOR_MUTED).pack(pady=20, anchor="nw")
+                     font=FONT_SUBTITLE, bg=COLOR_BG, fg=COLOR_MUTED).pack(pady=14, anchor="nw")
             return
 
         if prov.ddc_activo:
             card_ddc = self._crear_tarjeta_ddc(contenido, prov)
-            card_ddc.pack(fill="x", expand=False, pady=(0, 12), anchor="nw")
+            card_ddc.pack(fill="x", expand=False, pady=(0, 9), anchor="nw")
 
         if prov.dvr_activo:
             card_dvr = self._crear_tarjeta_dvr(contenido, prov)
-            card_dvr.pack(fill="x", expand=False, pady=(0, 12), anchor="nw")
+            card_dvr.pack(fill="x", expand=False, pady=(0, 9), anchor="nw")
 
     def _agregar_proveedor(self):
         PanelConfiguracion(self, None, self._al_guardar_proveedor, set(self.proveedores.keys()))
@@ -1703,7 +1718,7 @@ class App(tk.Tk):
         card = tk.Frame(parent, bg=COLOR_PANEL, bd=0, highlightthickness=1, highlightbackground=COLOR_CARD_BORDER)
         
         top_bar = tk.Frame(card, bg=COLOR_PANEL)
-        top_bar.pack(fill="x", padx=14, pady=(10, 8))
+        top_bar.pack(fill="x", padx=10, pady=(7, 6))
 
         tk.Label(top_bar, text="Flujo DDC (Despacho Directo a Cliente)", font=FONT_SUBTITLE, bg=COLOR_PANEL, fg=COLOR_PRIMARY).pack(side="left")
 
@@ -1720,10 +1735,10 @@ class App(tk.Tk):
         ]
 
         for txt, bg_c, fg_c in items_leyenda:
-            tk.Label(leyenda, text=txt, font=FONT_SMALL, bg=bg_c, fg=fg_c, padx=6, pady=2).pack(side="left", padx=2)
+            tk.Label(leyenda, text=txt, font=FONT_SMALL, bg=bg_c, fg=fg_c, padx=5, pady=2).pack(side="left", padx=2)
 
         grid_frame = tk.Frame(card, bg=COLOR_BORDER)
-        grid_frame.pack(fill="x", expand=False, padx=14, pady=(0, 12))
+        grid_frame.pack(fill="x", expand=False, padx=10, pady=(0, 9))
 
         grid_frame.grid_columnconfigure(0, weight=2, uniform="ddc_c")
         for c in range(len(columnas)):
@@ -1784,7 +1799,7 @@ class App(tk.Tk):
             fg_row_lbl = COLOR_HOY_BORDER if es_fila_hoy else COLOR_TEXT
 
             tk.Label(row_target, text=nom_dia, font=FONT_BOLD, bg=bg_row_lbl, fg=fg_row_lbl, anchor="w"
-                     ).grid(row=row_idx, column=0, sticky="nsew", padx=1, pady=1, ipadx=6)
+                     ).grid(row=row_idx, column=0, sticky="nsew", padx=1, pady=1, ipadx=5)
 
             f_rep = ciclo[0] if ciclo else None
             f_preps = ciclo[1] if ciclo else []
@@ -1806,7 +1821,7 @@ class App(tk.Tk):
                     bg = COLOR_HOY_ROW_BG
 
                 tk.Label(row_target, text=txt, font=FONT_SMALL, bg=bg, fg=fg, justify="center", anchor="center"
-                         ).grid(row=row_idx, column=c + 1, sticky="nsew", padx=1, pady=1, ipady=6)
+                         ).grid(row=row_idx, column=c + 1, sticky="nsew", padx=1, pady=1, ipady=5)
 
             jornada_val = 1
             plazo_val = ciclo[3] if ciclo else prov.ddc_plazos_adicionales.get(nom_dia, 0)
@@ -1860,7 +1875,7 @@ class App(tk.Tk):
         card = tk.Frame(parent, bg=COLOR_PANEL, bd=0, highlightthickness=1, highlightbackground=COLOR_CARD_BORDER)
 
         top_bar = tk.Frame(card, bg=COLOR_PANEL)
-        top_bar.pack(fill="x", padx=14, pady=(10, 8))
+        top_bar.pack(fill="x", padx=10, pady=(7, 6))
 
         tk.Label(top_bar, text="Flujo DVR (Despacho Vía Ripley)", font=FONT_SUBTITLE, bg=COLOR_PANEL, fg=COLOR_PRIMARY).pack(side="left")
 
@@ -1879,10 +1894,10 @@ class App(tk.Tk):
         ]
 
         for txt, bg_c, fg_c in items_leyenda:
-            tk.Label(leyenda, text=txt, font=FONT_SMALL, bg=bg_c, fg=fg_c, padx=6, pady=2).pack(side="left", padx=2)
+            tk.Label(leyenda, text=txt, font=FONT_SMALL, bg=bg_c, fg=fg_c, padx=5, pady=2).pack(side="left", padx=2)
 
         grid_frame = tk.Frame(card, bg=COLOR_BORDER)
-        grid_frame.pack(fill="x", expand=False, padx=14, pady=(0, 12))
+        grid_frame.pack(fill="x", expand=False, padx=10, pady=(0, 9))
 
         grid_frame.grid_columnconfigure(0, weight=2, uniform="dvr_c")
         for c in range(len(columnas)):
@@ -1947,7 +1962,7 @@ class App(tk.Tk):
             fg_row_lbl = COLOR_HOY_BORDER if es_fila_hoy else COLOR_TEXT
 
             tk.Label(row_target, text=nom_dia, font=FONT_BOLD, bg=bg_row_lbl, fg=fg_row_lbl, anchor="w"
-                     ).grid(row=row_idx, column=0, sticky="nsew", padx=1, pady=1, ipadx=6)
+                     ).grid(row=row_idx, column=0, sticky="nsew", padx=1, pady=1, ipadx=5)
 
             f_rep = ciclo[0] if ciclo else None
             f_preps = ciclo[1] if ciclo else []
@@ -1979,7 +1994,7 @@ class App(tk.Tk):
                     bg = COLOR_HOY_ROW_BG
 
                 tk.Label(row_target, text=txt, font=FONT_SMALL, bg=bg, fg=fg, justify="center", anchor="center"
-                         ).grid(row=row_idx, column=c + 1, sticky="nsew", padx=1, pady=1, ipady=6)
+                         ).grid(row=row_idx, column=c + 1, sticky="nsew", padx=1, pady=1, ipady=5)
 
             jornada_val = 1
             plazo_adic_val = ciclo[6] if ciclo else prov.dvr_plazos_adicionales.get(nom_dia, 0)
